@@ -1,0 +1,104 @@
+/* ---------- Mobile view (base, mobile first, no media query) ---------- */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #dedede;
+    color: #111111;
+    padding: 5px;
+    margin: 15px;
+    font-size: 25px;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 1.95em;
+}
+
+p {
+    text-align: center;
+}
+
+footer {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* One column grid, 10px gap between rows and columns */
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+figure {
+    margin: 0;
+    padding: 10px;
+    text-align: center;
+    background-color: #ffffff;
+    color: #111111;
+    border: 5px solid #1a3a8f;
+}
+
+figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: inherit;   /* the image follows the figure's shape */
+}
+
+/* ---------- Tablet view ---------- */
+@media all and (min-width: 772px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    figure {
+        border-radius: 50%;
+        padding: 30px;            /* keeps the caption inside the curve */
+    }
+
+    figure:last-child {
+        grid-column: 1 / -1;      /* last figure spans both columns */
+    }
+}
+
+/* ---------- Large screen view ---------- */
+@media all and (min-width: 992px) {
+    figure {
+        border-radius: 0;         /* overrides the tablet circles, no max-width */
+        padding: 10px;
+    }
+
+    figure:nth-child(3n) {
+        grid-column: 1 / -1;      /* every third figure spans both columns */
+    }
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+/* ---------- Dark color scheme ---------- */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #121212;
+        color: #f5f5f5;
+    }
+
+    a {
+        color: #ffe9a8;
+    }
+
+    figure {
+        background-color: #2b2b3d;
+        color: #ffe9a8;
+        border-color: #000000;
+    }
+}
